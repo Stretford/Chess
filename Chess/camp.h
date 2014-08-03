@@ -11,20 +11,23 @@
 
 #include <iostream>
 #include <string>
+#include "chessboard.h"
+#include "chessman.h"
+#include <list>
 
 using namespace std;
 
-static string chessman_black[7] = {"车","马","象","士","将","炮","卒"};
-static string chessman_red[7] = {"車","馬","相","仕","帥","砲","兵"};
 
+class chessboard;
 class camp
 {
 private:
     bool side;
-    string chessman[7];
 public:
-    camp(bool);
-    string get_chessman(int);
+    chessboard *chessBoard;
+    list<chessman *> chessmen;
+    camp(chessboard *, bool);
+    //string get_chessman(int);
 };
 
 #endif /* defined(__Chess__camp__) */

@@ -11,6 +11,7 @@
 		05A34178198C7F7800C22F6B /* camp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A34176198C7F7800C22F6B /* camp.cpp */; };
 		05A9A2E3198BB03C0017DFD1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A9A2E2198BB03C0017DFD1 /* main.cpp */; };
 		05A9A2E5198BB03C0017DFD1 /* Chess.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05A9A2E4198BB03C0017DFD1 /* Chess.1 */; };
+		05D273BE198E440000A27D63 /* chessman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05D273BC198E440000A27D63 /* chessman.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		05A9A2E2198BB03C0017DFD1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05A9A2E4198BB03C0017DFD1 /* Chess.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Chess.1; sourceTree = "<group>"; };
 		05A9A9A3198BBDAF0017DFD1 /* setup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setup.h; sourceTree = "<group>"; };
+		05D273BC198E440000A27D63 /* chessman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chessman.cpp; sourceTree = "<group>"; };
+		05D273BD198E440000A27D63 /* chessman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chessman.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 				05A34174198BE00300C22F6B /* chessboard.h */,
 				05A34176198C7F7800C22F6B /* camp.cpp */,
 				05A34177198C7F7800C22F6B /* camp.h */,
+				05D273BC198E440000A27D63 /* chessman.cpp */,
+				05D273BD198E440000A27D63 /* chessman.h */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 				05A9A2E3198BB03C0017DFD1 /* main.cpp in Sources */,
 				05A34175198BE00300C22F6B /* chessboard.cpp in Sources */,
 				05A34178198C7F7800C22F6B /* camp.cpp in Sources */,
+				05D273BE198E440000A27D63 /* chessman.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,12 +16,11 @@ int main(int argc, const char * argv[])
 {
 
     // insert code here...
-    //chessboard *cb = new chessboard();
+    chessboard *cb = new chessboard();
     //cb->print_chessboard();
     
     //string temp[] = {"车","马","象","士","将","炮","兵"};
-    camp *black = new camp(true);
-    camp *red = new camp(false);
+    cb->print_chessboard();
     return 0;
 }
 

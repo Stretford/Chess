@@ -15,13 +15,14 @@
 
 using namespace std;
 
-//extern string chess_board[9][10];
-void print_chessboard();
+static string CHESSMAN[15] = {"车","马","象","士","将","炮","卒","車","馬","相","仕","帥","砲","兵","一"};
+
+class camp;
 class chessboard
 {
 private:
     //string chessman[7];
-    string chess_board[90];
+    int chess_board[10][9];
 public:
     camp *black_side;
     camp *red_side;
