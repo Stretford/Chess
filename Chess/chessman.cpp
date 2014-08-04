@@ -31,13 +31,14 @@ string chessman::ToString()
 list<point *> chessman::Get_NextStep(point *p)
 {
     list<point *> result;
+    int left = p->columnNum - 1, right = p->columnNum + 1, up = p->rowNum - 1, down = p->rowNum + 1;
     switch(Type)
     {
-            int left = p->rowNum - 1, right = p->rowNum + 1, up = p->columnNum - 1, down = p->columnNum + 1;
         case CHARIOT:
+        {
             while(left >= 0)
             {
-                point *temp = new point(left, p->columnNum);
+                point *temp = new point(p->rowNum, left);
                 if(Camp->chessBoard->occupied(temp))
                     break;
                 result.push_back(temp);
@@ -45,30 +46,32 @@ list<point *> chessman::Get_NextStep(point *p)
             }
             while(right <= 8)
             {
-                point *temp = new point(right, p->columnNum);
+                point *temp = new point(p->rowNum, right);
                 if(Camp->chessBoard->occupied(temp))
                     break;
                 result.push_back(temp);
-                left--;
+                right++;
             }
-            while(left >= 0)
+            while(up >= 0)
             {
-                point *temp = new point(left, p->columnNum);
+                point *temp = new point(up, p->columnNum);
                 if(Camp->chessBoard->occupied(temp))
                     break;
                 result.push_back(temp);
-                left--;
+                up--;
             }
-            while(left >= 0)
+            while(down <= 9)
             {
-                point *temp = new point(left, p->columnNum);
+                point *temp = new point(down, p->columnNum);
                 if(Camp->chessBoard->occupied(temp))
                     break;
                 result.push_back(temp);
-                left--;
+                down++;
             }
+        }
+        break;
+        default:
             break;
-            
             
     }
     
