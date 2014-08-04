@@ -25,28 +25,22 @@ chessboard::chessboard()
     for(int i = 0; i < 10; i++)
         for(int j = 0; j < 9;j++)
             chess_board[i][j] = 14;
-    /*
-    for(int i = 0, j = 0;i < 5;i++, j += 2)
+
+    list<chessman *>::iterator ptrr, ptrb;
+    for(ptrb = black_side->chessmen.begin(), ptrr = red_side->chessmen.begin(); ptrb != black_side->chessmen.end(); ptrb++, ptrr++)
     {
-        chess_board[0][i] = i;
-        chess_board[0][8 - i] = i;
-        chess_board[9][i] = i + 7;
-        chess_board[9][8 - i] = i + 7;
-        chess_board[3][j] = 6;
-        chess_board[3][8 - j] = 6;
-        chess_board[6][j] = 13;
-        chess_board[6][8 - j] = 13;
+        chessman *cm = *ptrr;
+        chess_board[cm->rowNum][cm->columnNum] = cm->type();
+        cm = *ptrb;
+        chess_board[cm->rowNum][cm->columnNum] = cm->type();
     }
-    chess_board[2][1] = chess_board[2][7] = 5;
-    chess_board[7][1] = chess_board[7][7] = 12;
-     */
     
 }
 
 void chessboard::print_chessboard()
 {
 
-    string split = "\n|    |    |    |    |    |    |    |    |\n";
+    string split = "\n|    |    |    |    |    |    |    | 　　|\n";
     for(int i = 0; i < 10; i++)
     {
         for(int j = 0; j < 9;j++)
@@ -58,13 +52,17 @@ void chessboard::print_chessboard()
         }
         if(i == 4)
         {
-            cout<< "\n|                                       |\n";
+            cout<< "\n|                                    　　|\n";
             continue;
         }
-        if(i != 9)
+        if(i == 0 || i == 7)
+            cout<< "\n|    |    |    | ╲ | ╱  |    |    |    |\n";
+        else if(i == 1 || i == 8)
+            cout<< "\n|    |    |    | ╱ | ╲  |    |    |    |\n";
+        else if(i != 9)
             cout<< split;
     }
     //cout<< split;
-    printf("\033[7m ;31;41m 输出红色字符 \033[m");
+    //printf("\033[7m ;31;41m 输出红色字符 \033[m");
     
 }

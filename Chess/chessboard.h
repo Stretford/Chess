@@ -12,10 +12,9 @@
 #include <iostream>
 #include <string>
 #include "camp.h"
+#include "chessman.h"
 
 using namespace std;
-
-static string CHESSMAN[15] = {"车","马","象","士","将","炮","卒","車","馬","相","仕","帥","砲","兵","一"};
 
 class camp;
 class chessboard

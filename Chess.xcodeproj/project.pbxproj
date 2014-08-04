@@ -252,6 +252,7 @@
 					"$(inherited)",
 					"/Users/stretford/Downloads/wxWidgets-3.0.1/cocoabuild/lib",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -269,6 +270,7 @@
 					"$(inherited)",
 					"/Users/stretford/Downloads/wxWidgets-3.0.1/cocoabuild/lib",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -11,20 +11,75 @@
 
 #include <iostream>
 #include <string>
+#include "camp.h"
 
 using namespace std;
 
-static enum unit {chariot, horse, bishop, guard, king, canon, pawn};
+static enum unit {CHARIOT, HORSE, BISHOP, GUARD, KING, CANON, PAWN};
+static string CHESSMAN[15] = {"车","马","象","士","将","炮","卒","車","馬","相","仕","帥","砲","兵","一"};
+
+class camp;
 class chessman
 {
-private:
+protected:
     unit Type;
 public:
+    camp *Camp;
     int rowNum, columnNum;
-    bool side;
     int type();
-    chessman(unit, int, int);
-    
+    chessman(camp *, unit, int, int);
+    string ToString();
+    //virtual string ToString() = 0;
 };
 
+/*
+class chariot: public chessman
+{
+public:
+    chariot(int, int);
+    virtual string ToString();
+};
+
+class horse: public chessman
+{
+public:
+    horse(int, int);
+    virtual string ToString();
+};
+
+class bishop: public chessman
+{
+public:
+    bishop(int, int);
+    virtual string ToString();
+};
+
+class guard: public chessman
+{
+public:
+    guard(int, int);
+    virtual string ToString();
+};
+
+class king: public chessman
+{
+public:
+    king(int, int);
+    virtual string ToString();
+};
+
+class canon: public chessman
+{
+public:
+    canon(int, int);
+    virtual string ToString();
+};
+
+class pawn: public chessman
+{
+public:
+    pawn(int, int);
+    virtual string ToString();
+};
+*/
 #endif /* defined(__Chess__chessman__) */

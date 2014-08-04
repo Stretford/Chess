@@ -17,7 +17,7 @@
 
 using namespace std;
 
-
+class chessman;
 class chessboard;
 class camp
 {
@@ -27,6 +27,7 @@ public:
     chessboard *chessBoard;
     list<chessman *> chessmen;
     camp(chessboard *, bool);
+    bool Side();
     //string get_chessman(int);
 };
 
