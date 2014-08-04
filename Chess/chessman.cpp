@@ -7,13 +7,13 @@
 //
 
 #include "chessman.h"
+#include "camp.h"
 
 chessman::chessman(camp *cp, unit u, int row, int column)
 {
     Camp = cp;
     Type = u;
-    rowNum = row;
-    columnNum = column;
+    position = new point(row, column);
 }
 
 int chessman::type()
@@ -26,6 +26,53 @@ int chessman::type()
 string chessman::ToString()
 {
     return CHESSMAN[type()];
+}
+
+list<point *> chessman::Get_NextStep(point *p)
+{
+    list<point *> result;
+    switch(Type)
+    {
+            int left = p->rowNum - 1, right = p->rowNum + 1, up = p->columnNum - 1, down = p->columnNum + 1;
+        case CHARIOT:
+            while(left >= 0)
+            {
+                point *temp = new point(left, p->columnNum);
+                if(Camp->chessBoard->occupied(temp))
+                    break;
+                result.push_back(temp);
+                left--;
+            }
+            while(right <= 8)
+            {
+                point *temp = new point(right, p->columnNum);
+                if(Camp->chessBoard->occupied(temp))
+                    break;
+                result.push_back(temp);
+                left--;
+            }
+            while(left >= 0)
+            {
+                point *temp = new point(left, p->columnNum);
+                if(Camp->chessBoard->occupied(temp))
+                    break;
+                result.push_back(temp);
+                left--;
+            }
+            while(left >= 0)
+            {
+                point *temp = new point(left, p->columnNum);
+                if(Camp->chessBoard->occupied(temp))
+                    break;
+                result.push_back(temp);
+                left--;
+            }
+            break;
+            
+            
+    }
+    
+    return result;
 }
 
 

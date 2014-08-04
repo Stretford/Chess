@@ -30,11 +30,16 @@ chessboard::chessboard()
     for(ptrb = black_side->chessmen.begin(), ptrr = red_side->chessmen.begin(); ptrb != black_side->chessmen.end(); ptrb++, ptrr++)
     {
         chessman *cm = *ptrr;
-        chess_board[cm->rowNum][cm->columnNum] = cm->type();
+        chess_board[cm->position->rowNum][cm->position->columnNum] = cm->type();
         cm = *ptrb;
-        chess_board[cm->rowNum][cm->columnNum] = cm->type();
+        chess_board[cm->position->rowNum][cm->position->columnNum] = cm->type();
     }
     
+}
+
+bool chessboard::occupied(point *p)
+{
+    return chess_board[p->rowNum][p->columnNum] == 14;
 }
 
 void chessboard::print_chessboard()

@@ -12,6 +12,9 @@
 #include <iostream>
 #include <string>
 #include "camp.h"
+#include "tools.h"
+#include <list>
+#include "chessboard.h"
 
 using namespace std;
 
@@ -23,13 +26,14 @@ class chessman
 {
 protected:
     unit Type;
+    //list<point *> valid_destination;
 public:
     camp *Camp;
-    int rowNum, columnNum;
+    point *position;
     int type();
     chessman(camp *, unit, int, int);
     string ToString();
-    //virtual string ToString() = 0;
+    list<point *> Get_NextStep(point *);
 };
 
 /*

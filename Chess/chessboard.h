@@ -13,6 +13,7 @@
 #include <string>
 #include "camp.h"
 #include "chessman.h"
+#include "tools.h"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ public:
     camp *red_side;
     chessboard();
     void print_chessboard();
+    bool occupied(point *);
 };
 
 

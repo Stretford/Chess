@@ -12,6 +12,8 @@
 		05A9A2E3198BB03C0017DFD1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A9A2E2198BB03C0017DFD1 /* main.cpp */; };
 		05A9A2E5198BB03C0017DFD1 /* Chess.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05A9A2E4198BB03C0017DFD1 /* Chess.1 */; };
 		05D273BE198E440000A27D63 /* chessman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05D273BC198E440000A27D63 /* chessman.cpp */; };
+		1D7B603D198FBA8A00F84FBD /* step.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B603B198FBA8A00F84FBD /* step.cpp */; };
+		1D7B6041198FBFCC00F84FBD /* tools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B603F198FBFCC00F84FBD /* tools.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +40,10 @@
 		05A9A9A3198BBDAF0017DFD1 /* setup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setup.h; sourceTree = "<group>"; };
 		05D273BC198E440000A27D63 /* chessman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chessman.cpp; sourceTree = "<group>"; };
 		05D273BD198E440000A27D63 /* chessman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chessman.h; sourceTree = "<group>"; };
+		1D7B603B198FBA8A00F84FBD /* step.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = step.cpp; sourceTree = "<group>"; };
+		1D7B603C198FBA8A00F84FBD /* step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = step.h; sourceTree = "<group>"; };
+		1D7B603F198FBFCC00F84FBD /* tools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tools.cpp; sourceTree = "<group>"; };
+		1D7B6040198FBFCC00F84FBD /* tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tools.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,7 @@
 		05A9A2E1198BB03C0017DFD1 /* Chess */ = {
 			isa = PBXGroup;
 			children = (
+				1D7B603E198FBFB000F84FBD /* util */,
 				05A9A9A0198BBDAF0017DFD1 /* include */,
 				05A9A2E2198BB03C0017DFD1 /* main.cpp */,
 				05A9A2E4198BB03C0017DFD1 /* Chess.1 */,
@@ -79,6 +86,8 @@
 				05A34177198C7F7800C22F6B /* camp.h */,
 				05D273BC198E440000A27D63 /* chessman.cpp */,
 				05D273BD198E440000A27D63 /* chessman.h */,
+				1D7B603B198FBA8A00F84FBD /* step.cpp */,
+				1D7B603C198FBA8A00F84FBD /* step.h */,
 			);
 			path = Chess;
 			sourceTree = "<group>";
@@ -106,6 +115,15 @@
 				05A9A9A3198BBDAF0017DFD1 /* setup.h */,
 			);
 			path = wx;
+			sourceTree = "<group>";
+		};
+		1D7B603E198FBFB000F84FBD /* util */ = {
+			isa = PBXGroup;
+			children = (
+				1D7B603F198FBFCC00F84FBD /* tools.cpp */,
+				1D7B6040198FBFCC00F84FBD /* tools.h */,
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,7 +180,9 @@
 				05A9A2E3198BB03C0017DFD1 /* main.cpp in Sources */,
 				05A34175198BE00300C22F6B /* chessboard.cpp in Sources */,
 				05A34178198C7F7800C22F6B /* camp.cpp in Sources */,
+				1D7B603D198FBA8A00F84FBD /* step.cpp in Sources */,
 				05D273BE198E440000A27D63 /* chessman.cpp in Sources */,
+				1D7B6041198FBFCC00F84FBD /* tools.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
