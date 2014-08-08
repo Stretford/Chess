@@ -26,7 +26,7 @@ class chessman
 {
 protected:
     unit Type;
-    //list<point *> valid_destination;
+    list<point *> horse_stride(list<point *>, point *, bool);
 public:
     camp *Camp;
     point *position;
@@ -34,6 +34,7 @@ public:
     chessman(camp *, unit, int, int);
     string ToString();
     list<point *> Get_NextStep(point *);
+
 };
 
 /*

@@ -9,6 +9,7 @@
 #include "chessman.h"
 #include "camp.h"
 
+
 chessman::chessman(camp *cp, unit u, int row, int column)
 {
     Camp = cp;
@@ -28,6 +29,44 @@ string chessman::ToString()
     return CHESSMAN[type()];
 }
 
+list<point *> chessman::horse_stride(list<point *> l, point *p, bool horizontal)
+{
+    list<point *> result = l;
+    if(!chessboard::WithinBoard(p) || Camp->chessBoard->occupied(p))
+        return l;
+    if(horizontal)  //striding horizontally, check vertically
+    {
+        point *temp = new point(p->rowNum - 1, p->columnNum - 1);
+        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+            result.push_back(temp);
+        temp = new point(p->rowNum - 1, p->columnNum + 1);
+        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+            result.push_back(temp);
+        temp = new point(p->rowNum + 1, p->columnNum - 1);
+        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+            result.push_back(temp);
+        temp = new point(p->rowNum + 1, p->columnNum + 1);
+        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+            result.push_back(temp);
+    }
+    else    //striding vertically, then check horizontally
+    {
+        point *temp = new point(p->rowNum - 1, p->columnNum - 1);
+        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+            result.push_back(temp);
+        temp = new point(p->rowNum + 1, p->columnNum - 1);
+        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+            result.push_back(temp);
+        temp = new point(p->rowNum - 1, p->columnNum + 1);
+        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+            result.push_back(temp);
+        temp = new point(p->rowNum + 1, p->columnNum + 1);
+        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+            result.push_back(temp);
+    }
+    return result;
+}
+
 list<point *> chessman::Get_NextStep(point *p)
 {
     list<point *> result;
@@ -35,6 +74,7 @@ list<point *> chessman::Get_NextStep(point *p)
     switch(Type)
     {
         case CHARIOT:
+        case CANON:
         {
             while(left >= 0)
             {
@@ -69,10 +109,22 @@ list<point *> chessman::Get_NextStep(point *p)
                 down++;
             }
         }
-        break;
+            break;
+        case HORSE:
+            result = horse_stride(result, new point(up, p->columnNum), false);
+            result = horse_stride(result, new point(down, p->columnNum), false);
+            result = horse_stride(result, new point(p->rowNum, left), true);
+            result = horse_stride(result, new point(p->rowNum, right), true);
+            break;
         default:
             break;
             
+    }
+    list<point *>::iterator item;
+    for(item = result.begin(); item != result.end(); item++)
+    {
+        point *temp = *item;
+        Camp->chessBoard->chess_board[temp->rowNum][temp->columnNum] = type();
     }
     
     return result;

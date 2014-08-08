@@ -22,13 +22,15 @@ class chessboard
 {
 private:
     //string chessman[7];
-    int chess_board[10][9];
+    //int chess_board[10][9];
 public:
+    int chess_board[10][9];
     camp *black_side;
     camp *red_side;
     chessboard();
     void print_chessboard();
     bool occupied(point *);
+    static bool WithinBoard(point *);
 };
 
 

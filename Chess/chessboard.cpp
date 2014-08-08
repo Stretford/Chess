@@ -39,7 +39,7 @@ chessboard::chessboard()
 
 bool chessboard::occupied(point *p)
 {
-    return chess_board[p->rowNum][p->columnNum] == 14;
+    return chess_board[p->rowNum][p->columnNum] != 14;
 }
 
 void chessboard::print_chessboard()
@@ -70,4 +70,9 @@ void chessboard::print_chessboard()
     //cout<< split;
     //printf("\033[7m ;31;41m 输出红色字符 \033[m");
     
+}
+
+bool chessboard::WithinBoard(point *p)
+{
+    return (p->rowNum >=0 && p->rowNum <= 9 && p->columnNum >=0 && p->columnNum <= 8);
 }

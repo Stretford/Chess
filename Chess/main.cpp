@@ -20,6 +20,12 @@ int main(int argc, const char * argv[])
     //cb->print_chessboard();
     
     //string temp[] = {"车","马","象","士","将","炮","兵"};
+    //cb->print_chessboard();
+    list<chessman *>::iterator i = cb->red_side->chessmen.begin();
+    for(int k = 0; k < 3; k++)
+        i++;
+    chessman *cm = *i;
+    list<point *> test = cm->Get_NextStep(cm->position);
     cb->print_chessboard();
     return 0;
 }
