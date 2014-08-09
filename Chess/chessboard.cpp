@@ -14,14 +14,13 @@
 #include <stdio.h>
 #include <unistd.h>
 
-
 using namespace std;
 
 chessboard::chessboard()
 {
     black_side = new camp(this, true);
     red_side = new camp(this, false);
-    
+
     for(int i = 0; i < 10; i++)
         for(int j = 0; j < 9;j++)
             chess_board[i][j] = 14;
@@ -34,12 +33,29 @@ chessboard::chessboard()
         cm = *ptrb;
         chess_board[cm->position->rowNum][cm->position->columnNum] = cm->type();
     }
+}
+
+chessboard::chessboard(int p[])
+{
     
+    black_side = new camp(this, true);
+    red_side = new camp(this, false);
+    
+    for(int i = 0; i < 90; i++)
+    {
+        int g = i % 10, s = i / 10;
+        chess_board[s][g] = p[i];
+    }
 }
 
 bool chessboard::occupied(point *p)
 {
     return chess_board[p->rowNum][p->columnNum] != 14;
+}
+
+bool chessboard::GetSide(point *p)
+{
+    return chess_board[p->rowNum][p->columnNum] < 7;
 }
 
 void chessboard::print_chessboard()
@@ -69,10 +85,7 @@ void chessboard::print_chessboard()
     }
     //cout<< split;
     //printf("\033[7m ;31;41m 输出红色字符 \033[m");
-    
+
 }
 
-bool chessboard::WithinBoard(point *p)
-{
-    return (p->rowNum >=0 && p->rowNum <= 9 && p->columnNum >=0 && p->columnNum <= 8);
-}
+

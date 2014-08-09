@@ -16,25 +16,25 @@
 #include <list>
 #include "chessboard.h"
 
+
 using namespace std;
 
-static enum unit {CHARIOT, HORSE, BISHOP, GUARD, KING, CANON, PAWN};
+ enum unit {CHARIOT, HORSE, BISHOP, GUARD, KING, CANON, PAWN};
 static string CHESSMAN[15] = {"车","马","象","士","将","炮","卒","車","馬","相","仕","帥","砲","兵","一"};
 
 class camp;
 class chessman
 {
 protected:
-    unit Type;
-    list<point *> horse_stride(list<point *>, point *, bool);
+    //list<point *> horse_stride(list<point *>, point *, bool);
 public:
+    unit Type;
     camp *Camp;
     point *position;
     int type();
     chessman(camp *, unit, int, int);
     string ToString();
-    list<point *> Get_NextStep(point *);
-
+    //list<point *> GetNextStep(point *);
 };
 
 /*

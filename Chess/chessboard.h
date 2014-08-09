@@ -18,6 +18,7 @@
 using namespace std;
 
 class camp;
+class point;
 class chessboard
 {
 private:
@@ -28,9 +29,11 @@ public:
     camp *black_side;
     camp *red_side;
     chessboard();
+    chessboard(int[]);
     void print_chessboard();
     bool occupied(point *);
-    static bool WithinBoard(point *);
+    bool GetSide(point *);
+    //int[] chess_board_copy();
 };
 
 

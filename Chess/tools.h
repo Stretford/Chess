@@ -21,6 +21,9 @@ public:
     int columnNum;
     point(int, int);
     string ToString();
+    bool WithinBoard();
+    bool StaysOpposite(bool);
+    bool InPalace(bool);
 };
 
 #endif /* defined(__Chess__tools__) */

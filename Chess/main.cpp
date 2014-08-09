@@ -9,6 +9,7 @@
 #include <iostream>
 #include "chessboard.h"
 #include "camp.h"
+#include "step.h"
 
 using namespace std;
 
@@ -19,13 +20,12 @@ int main(int argc, const char * argv[])
     chessboard *cb = new chessboard();
     //cb->print_chessboard();
     
-    //string temp[] = {"车","马","象","士","将","炮","兵"};
-    //cb->print_chessboard();
-    list<chessman *>::iterator i = cb->red_side->chessmen.begin();
-    for(int k = 0; k < 3; k++)
+    list<chessman *>::iterator i = cb->black_side->chessmen.begin();
+    for(int k = 0; k < 9; k++)
         i++;
     chessman *cm = *i;
-    list<point *> test = cm->Get_NextStep(cm->position);
+    //list<point *> test = cm->GetNextStep(new point(4, 2));
+    step *step = new class step(cb, cm, new point(2, 4));
     cb->print_chessboard();
     return 0;
 }

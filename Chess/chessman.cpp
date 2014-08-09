@@ -9,7 +9,6 @@
 #include "chessman.h"
 #include "camp.h"
 
-
 chessman::chessman(camp *cp, unit u, int row, int column)
 {
     Camp = cp;
@@ -29,45 +28,46 @@ string chessman::ToString()
     return CHESSMAN[type()];
 }
 
+/*
 list<point *> chessman::horse_stride(list<point *> l, point *p, bool horizontal)
 {
     list<point *> result = l;
-    if(!chessboard::WithinBoard(p) || Camp->chessBoard->occupied(p))
+    if(!p->WithinBoard() || Camp->chessBoard->occupied(p))
         return l;
     if(horizontal)  //striding horizontally, check vertically
     {
         point *temp = new point(p->rowNum - 1, p->columnNum - 1);
-        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+        if(temp->WithinBoard() && !Camp->chessBoard->occupied(temp))
             result.push_back(temp);
         temp = new point(p->rowNum - 1, p->columnNum + 1);
-        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+        if(temp->WithinBoard() && !Camp->chessBoard->occupied(temp))
             result.push_back(temp);
         temp = new point(p->rowNum + 1, p->columnNum - 1);
-        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+        if(temp->WithinBoard() && !Camp->chessBoard->occupied(temp))
             result.push_back(temp);
         temp = new point(p->rowNum + 1, p->columnNum + 1);
-        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+        if(temp->WithinBoard() && !Camp->chessBoard->occupied(temp))
             result.push_back(temp);
     }
     else    //striding vertically, then check horizontally
     {
         point *temp = new point(p->rowNum - 1, p->columnNum - 1);
-        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+        if(temp->WithinBoard() && !Camp->chessBoard->occupied(temp))
             result.push_back(temp);
         temp = new point(p->rowNum + 1, p->columnNum - 1);
-        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+        if(temp->WithinBoard() && !Camp->chessBoard->occupied(temp))
             result.push_back(temp);
         temp = new point(p->rowNum - 1, p->columnNum + 1);
-        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+        if(temp->WithinBoard() && !Camp->chessBoard->occupied(temp))
             result.push_back(temp);
         temp = new point(p->rowNum + 1, p->columnNum + 1);
-        if(chessboard::WithinBoard(temp) && !Camp->chessBoard->occupied(temp))
+        if(temp->WithinBoard() && !Camp->chessBoard->occupied(temp))
             result.push_back(temp);
     }
     return result;
 }
 
-list<point *> chessman::Get_NextStep(point *p)
+list<point *> chessman::GetNextStep(point *p)
 {
     list<point *> result;
     int left = p->columnNum - 1, right = p->columnNum + 1, up = p->rowNum - 1, down = p->rowNum + 1;
@@ -116,9 +116,76 @@ list<point *> chessman::Get_NextStep(point *p)
             result = horse_stride(result, new point(p->rowNum, left), true);
             result = horse_stride(result, new point(p->rowNum, right), true);
             break;
+        case BISHOP:
+        {
+            point *temp = new point(p->rowNum + 2, p->columnNum - 2);
+            point *feet = new point(p->rowNum + 1, p->columnNum - 1);
+            if(temp->WithinBoard() && !Camp->chessBoard->occupied(feet) && !temp->StaysOpposite(Camp->Side()) && !Camp->chessBoard->occupied(temp))
+                result.push_back(temp);
+            temp = new point(p->rowNum + 2, p->columnNum + 2);
+            feet = new point(p->rowNum + 1, p->columnNum + 1);
+            if(temp->WithinBoard() && !Camp->chessBoard->occupied(feet) && !temp->StaysOpposite(Camp->Side()) && !Camp->chessBoard->occupied(temp))
+                result.push_back(temp);
+            temp = new point(p->rowNum - 2, p->columnNum - 2);
+            feet = new point(p->rowNum - 1, p->columnNum - 1);
+            if(temp->WithinBoard() && !Camp->chessBoard->occupied(feet) && !temp->StaysOpposite(Camp->Side()) && !Camp->chessBoard->occupied(temp))
+                result.push_back(temp);
+            temp = new point(p->rowNum - 2, p->columnNum + 2);
+            feet = new point(p->rowNum - 1, p->columnNum + 1);
+            if(temp->WithinBoard() && !Camp->chessBoard->occupied(feet) && !temp->StaysOpposite(Camp->Side()) && !Camp->chessBoard->occupied(temp))
+                result.push_back(temp);
+        }
+            break;
+        case GUARD:
+            for(int i = -1;i <= 1;i += 2)
+                for(int j = -1;j <= 1;j += 2)
+                {
+                    point *temp = new point(p->rowNum + i, p->columnNum + j);
+                    if(temp->InPalace(Camp->Side()))
+                        result.push_back(temp);
+                }
+            break;
+        case KING:
+            for(int i = -1; i <= 1;i += 2)
+            {
+                point *temp = new point(p->rowNum + i, p->columnNum);
+                if(temp->InPalace(Camp->Side()))
+                    result.push_back(temp);
+            }
+            for(int i = -1; i <= 1;i += 2)
+            {
+                point *temp = new point(p->rowNum, p->columnNum + i);
+                if(temp->InPalace(Camp->Side()))
+                    result.push_back(temp);
+            }
+            break;
+        case PAWN:
+        {
+            int nextRow = Camp->Side() ? p->rowNum + 1: p->rowNum - 1;
+            point *temp = new point(nextRow, p->columnNum);
+            if(!p->StaysOpposite(Camp->Side()))
+            {
+                int a = 3;
+                if(!Camp->chessBoard->occupied(temp))
+                    result.push_back(temp);
+            }
+            else
+            {
+                point *temp = new point(p->rowNum, p->columnNum - 1);
+                if(!Camp->chessBoard->occupied(temp))
+                    result.push_back(temp);
+                temp = new point(p->rowNum, p->columnNum + 1);
+                if(!Camp->chessBoard->occupied(temp))
+                    result.push_back(temp);
+                temp = new point(nextRow, p->columnNum);
+                if(!Camp->chessBoard->occupied(temp))
+                    result.push_back(temp);
+            }
+        }
+            break;
         default:
             break;
-            
+
     }
     list<point *>::iterator item;
     for(item = result.begin(); item != result.end(); item++)
@@ -126,10 +193,10 @@ list<point *> chessman::Get_NextStep(point *p)
         point *temp = *item;
         Camp->chessBoard->chess_board[temp->rowNum][temp->columnNum] = type();
     }
-    
+
     return result;
 }
-
+*/
 
 /*
 chariot::chariot(int row, int column)

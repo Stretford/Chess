@@ -28,3 +28,22 @@ string point::ToString()
     ss>> c;
     return "(" + r + ", " + c + ")";
 }
+
+bool point::WithinBoard()
+{
+    return (rowNum >=0 && rowNum <= 9 && columnNum >=0 && columnNum <= 8);
+}
+
+bool point::StaysOpposite(bool side)
+{
+    return side? rowNum >= 5 : rowNum < 5;
+}
+
+bool point::InPalace(bool side)
+{
+    if(side)
+        return rowNum <= 2 && columnNum >= 3 && columnNum <= 5;
+    return rowNum >= 7 && columnNum >= 3 && columnNum <= 5;
+}
+
+
