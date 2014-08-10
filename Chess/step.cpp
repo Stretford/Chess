@@ -231,6 +231,18 @@ vector<point *> step::GetPossibleSteps()
     return result;
 }
 
+bool step::IsValid()
+{
+    vector<point *> validSteps = GetPossibleSteps();
+    //return (find(validSteps.begin(), validSteps.end(), destination) != validSteps.end());
+    for(int i = 0;i < validSteps.size();i++)
+    {
+        if(validSteps[i]->IsEqualTo(destination))
+           return true;
+    }
+           return false;
+}
+
 step *step::NextStep(chessman *chsm, point *p)
 {
     cb->chess_board[p->rowNum][p->columnNum] = chsm->type();

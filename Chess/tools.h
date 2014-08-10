@@ -24,6 +24,7 @@ public:
     bool WithinBoard();
     bool StaysOpposite(bool);
     bool InPalace(bool);
+    bool IsEqualTo(point *);
 };
 
 #endif /* defined(__Chess__tools__) */

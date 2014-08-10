@@ -49,4 +49,9 @@ bool point::InPalace(bool side)
     return rowNum >= 7 && columnNum >= 3 && columnNum <= 5;
 }
 
+bool point::IsEqualTo(point *p)
+{
+    return (rowNum == p->rowNum && columnNum == p->columnNum);
+}
+
 

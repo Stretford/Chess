@@ -31,6 +31,7 @@ public:
     step(chessman *, point *);
     vector<point *> GetPossibleSteps();
     step *NextStep(chessman *, point *);
+    bool IsValid();
 };
 
 #endif /* defined(__Chess__step__) */

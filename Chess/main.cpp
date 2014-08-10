@@ -27,11 +27,10 @@ int main(int argc, const char * argv[])
     chessman *cm = *i;
     cm->position = new point(6, 3);
     //vector<point *> test = cm->(new point(4, 2));
-    step *step = new class step(cm, new point(2, 4));
-    vector<point *> test = step->GetPossibleSteps();
+    step *step = new class step(cm, new point(9, 3));
+    //vector<point *> test = step->GetPossibleSteps();
     cb->print_chessboard();
-    
-    
+    cout<< step->IsValid();
     return 0;
 }
 
