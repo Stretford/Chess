@@ -41,3 +41,5 @@ bool camp::Side()
     return side;
 }
 
+
+

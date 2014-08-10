@@ -12,7 +12,7 @@
 #include <string>
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
+#include <sstream>
 
 using namespace std;
 
@@ -58,6 +58,12 @@ bool chessboard::GetSide(point *p)
     return chess_board[p->rowNum][p->columnNum] < 7;
 }
 
+bool chessboard::self_camped(point *p, bool side)
+{
+    bool a = (chess_board[p->rowNum][p->columnNum] != 14 && side == GetSide(p));
+    return a;
+}
+
 void chessboard::print_chessboard()
 {
 
@@ -86,6 +92,34 @@ void chessboard::print_chessboard()
     //cout<< split;
     //printf("\033[7m ;31;41m 输出红色字符 \033[m");
 
+}
+
+void chessboard::inputTurn()
+{
+    cout<< "input the chessman coordinates(rowNum, columnNum):";
+    point *p = new point(-1, -1);
+    char s;
+    cin >> p->rowNum >> s >> p->columnNum;
+    while(!p->WithinBoard())
+    {
+        cout<< "Invalid coordinate";
+        cin >> p->rowNum >> s >> p->columnNum;
+        //return;
+    }
+    while(chess_board[p->rowNum][p->columnNum] == 14)   //empty
+    {
+        cout<< "No chessman found";
+        cin >> p->rowNum >> s >> p->columnNum;
+    }
+    cout<< CHESSMAN[chess_board[p->rowNum][p->columnNum]] << ", destination:";
+    
+    cin >> p->rowNum >> s >> p->columnNum;
+    while(!p->WithinBoard())
+    {
+        cout<< "Invalid coordinate";
+        cin >> p->rowNum >> s >> p->columnNum;
+        //return;
+    }
 }
 
 

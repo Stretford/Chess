@@ -10,6 +10,7 @@
 #include "chessboard.h"
 #include "camp.h"
 #include "step.h"
+#include <vector>
 
 using namespace std;
 
@@ -21,12 +22,16 @@ int main(int argc, const char * argv[])
     //cb->print_chessboard();
     
     list<chessman *>::iterator i = cb->black_side->chessmen.begin();
-    for(int k = 0; k < 9; k++)
+    for(int k = 0; k < 1; k++)
         i++;
     chessman *cm = *i;
-    //list<point *> test = cm->GetNextStep(new point(4, 2));
-    step *step = new class step(cb, cm, new point(2, 4));
+    cm->position = new point(6, 3);
+    //vector<point *> test = cm->(new point(4, 2));
+    step *step = new class step(cm, new point(2, 4));
+    vector<point *> test = step->GetPossibleSteps();
     cb->print_chessboard();
+    
+    
     return 0;
 }
 

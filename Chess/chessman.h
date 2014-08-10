@@ -14,12 +14,13 @@
 #include "camp.h"
 #include "tools.h"
 #include <list>
+#include <vector>
 #include "chessboard.h"
 
 
 using namespace std;
 
- enum unit {CHARIOT, HORSE, BISHOP, GUARD, KING, CANON, PAWN};
+enum unit {CHARIOT, HORSE, BISHOP, GUARD, KING, CANON, PAWN};
 static string CHESSMAN[15] = {"车","马","象","士","将","炮","卒","車","馬","相","仕","帥","砲","兵","一"};
 
 class camp;
@@ -34,7 +35,7 @@ public:
     int type();
     chessman(camp *, unit, int, int);
     string ToString();
-    //list<point *> GetNextStep(point *);
+    //vector<point *> NextPossibleSteps;
 };
 
 /*

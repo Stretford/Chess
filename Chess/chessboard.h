@@ -32,7 +32,9 @@ public:
     chessboard(int[]);
     void print_chessboard();
     bool occupied(point *);
+    bool self_camped(point *, bool);
     bool GetSide(point *);
+    void inputTurn();
     //int[] chess_board_copy();
 };
 

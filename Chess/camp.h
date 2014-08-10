@@ -28,7 +28,6 @@ public:
     list<chessman *> chessmen;
     camp(chessboard *, bool);
     bool Side();
-    //string get_chessman(int);
 };
 
 #endif /* defined(__Chess__camp__) */

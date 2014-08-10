@@ -20,12 +20,14 @@ point::point(int row, int column)
 
 string point::ToString()
 {
-    stringstream ss;
+    ostringstream os;
     string r, c;
-    ss<< rowNum;
-    ss>> r;
-    ss<<columnNum;
-    ss>> c;
+    os<< rowNum;
+    r = os.str();
+    os.str("");
+    os<< columnNum;
+    c = os.str();
+    
     return "(" + r + ", " + c + ")";
 }
 
@@ -36,7 +38,8 @@ bool point::WithinBoard()
 
 bool point::StaysOpposite(bool side)
 {
-    return side? rowNum >= 5 : rowNum < 5;
+    bool a = side? rowNum >= 5 : rowNum < 5;
+    return a;
 }
 
 bool point::InPalace(bool side)

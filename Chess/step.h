@@ -21,14 +21,15 @@ using namespace std;
 class step
 {
 private:
-    list<point *> horse_stride(list<point *>, point *, bool);
+    enum direction {LEFT, RIGHT, UP, DOWN};
+    vector<point *> horse_stride(vector<point *>, direction);
 public:
     chessboard *cb;
     chessman *cm;
     point *destination;
     point *previous_location;
-    step(chessboard *, chessman *, point *);
-    list<point *> GetPossibleSteps(point *);
+    step(chessman *, point *);
+    vector<point *> GetPossibleSteps();
     step *NextStep(chessman *, point *);
 };
 
